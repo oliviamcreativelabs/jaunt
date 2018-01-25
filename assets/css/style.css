@@ -1,0 +1,67 @@
+.navbar {
+	background-color: black;
+	color: white;
+	font-family: 'Megrim', cursive;
+}
+
+.jumbotron {
+	background-color: black;
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+
+h1 {
+	color: gray;
+	font-family: 'Mouse Memoirs', sans-serif;
+}
+
+h5 {
+	font-family: 'Mouse Memoirs', sans-serif;
+	font-size: 40px;
+}
+
+
+.lead {
+	color: white;
+}
+
+
+#solo-card {
+	background: url('http://mwhd.altervista.org/wp_upload/wallpapers/material/Dark_Red_Material-Osama_Ahmed.jpg');
+	background-position: center;
+	background-color: black;
+	color: white;
+	height: 400px;
+	padding-right: 0px;
+	border: 0px;
+	border-radius: 0px;
+}
+
+#solo-card:hover {
+	transition: all 0.3s ease-in;
+	background-position: center;
+	background: url('http://l-joseph.com/imgs/para2.png') bottom;
+}
+
+#group-card {
+	background: url('https://pre00.deviantart.net/bdc6/th/pre/f/2014/330/c/f/flat_pattern_quilts_wallpaper_1_by_microfreaks-d87pp8s.png');
+	background-color: black;
+	background-position: center;
+	color: white;
+	height: 400px;
+	padding-right: 0px;
+	border: 0px;
+	border-radius: 0px;
+}
+
+#group-card:hover {
+	transition: all 0.3s ease-in;
+	background-position: center;
+	background: url('http://l-joseph.com/imgs/para2.png') bottom;
+}
+
+.col {
+	padding: 0px;
+
+}
