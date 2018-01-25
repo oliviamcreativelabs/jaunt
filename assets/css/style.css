@@ -1,22 +1,39 @@
+
+body {
+	background-color: black;
+}
+
 .navbar {
 	background-color: black;
-	color: white;
 	font-family: 'Megrim', cursive;
 }
 
+.navbar-brand {
+	color: white;
+}
+
+.navbar-brand:hover {
+	color: red;
+}
+
 .jumbotron {
+	width: 100%;
 	background-color: black;
 	margin-bottom: 0px;
 	text-align: center;
+	background: url('https://media.wired.com/photos/592744d3f3e2356fd800bf00/master/w_2000,c_limit/Netflix_LoadTime.gif');
+	background-position: center;
+	background-size: 70%;
 }
 
 
 h1 {
-	color: gray;
+	color: red;
 	font-family: 'Mouse Memoirs', sans-serif;
 }
 
 h5 {
+	color: red;
 	font-family: 'Mouse Memoirs', sans-serif;
 	font-size: 40px;
 }
@@ -28,12 +45,10 @@ h5 {
 
 
 #solo-card {
-	background: url('http://mwhd.altervista.org/wp_upload/wallpapers/material/Dark_Red_Material-Osama_Ahmed.jpg');
-	background-position: center;
-	background-color: black;
+	background: url('http://l-joseph.com/imgs/para2.png');
+	background-color: red;
 	color: white;
 	height: 400px;
-	padding-right: 0px;
 	border: 0px;
 	border-radius: 0px;
 }
@@ -41,16 +56,14 @@ h5 {
 #solo-card:hover {
 	transition: all 0.3s ease-in;
 	background-position: center;
-	background: url('http://l-joseph.com/imgs/para2.png') bottom;
+	background: url('https://wallpaperscraft.com/image/dark_black_and_white_abstract_black_background_76353_1024x1024.jpg') bottom;
 }
 
 #group-card {
-	background: url('https://pre00.deviantart.net/bdc6/th/pre/f/2014/330/c/f/flat_pattern_quilts_wallpaper_1_by_microfreaks-d87pp8s.png');
-	background-color: black;
-	background-position: center;
+	background: url('https://wallpaperscraft.com/image/dark_black_and_white_abstract_black_background_76353_1024x1024.jpg');
+	background-color: gray;
 	color: white;
-	height: 400px;
-	padding-right: 0px;
+	height: 100%;
 	border: 0px;
 	border-radius: 0px;
 }
@@ -64,4 +77,8 @@ h5 {
 .col {
 	padding: 0px;
 
+}
+
+.row {
+	margin: 0px;
 }
