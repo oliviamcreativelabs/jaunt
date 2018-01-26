@@ -13,10 +13,9 @@
 // DOCUMENT READY 
 $(function () {
 
-/**   
- * !  $("#search_button")**/.on("click", function () { 
+//      $("#search_button").on("click", function () {
         var accessToken = "3uLaVQrJwP21kaJjuErLNk5QE9TTtwtFA7LErPkhI32wZg6PYKUll05F-9_fkoK45CnUZ6qyVOXkvHGjRK-9ajm-CtR9J3r7d5zMfcl72IUJbtLy8yUpSZ-uHlpmWnYx"
-        var city = $("#userInput").val(); // <- The city variable will hold the results we get from the user's inputs via HTML
+        var city = $(/*"#USER-INPUT"*/).val(); // <- The city variable will hold the results we get from the user's inputs via HTML
         var queryURL = "https://api.yelp.com/v3/businesses/search?&location=" + city;
 
 /** 
@@ -49,14 +48,46 @@ $.ajax({
             console.log(obj.name);
             var div = $("<div>"); 
             div.html(obj.name);
-    /**  
-     * !    $("#STORE_DATA")**/.append(div); //! << CHANGE (#STORE DATA) TO MATCH HTML ID 
+     
+     //    $("#STORE_DATA")**/.append(div); //! << CHANGE (#STORE DATA) TO MATCH HTML ID 
    
         }
     },
 
 })
 })
- /** 
-*! NOTE: Errors expected at 15/51/59  due to commented out code--Please double check when removing comments
-**/
+
+//==================================================================================================
+//                                                                                                  
+//  ######  ##   ####  ##  ##  #####  ######  ###    ###    ###     ####  ######  #####  #####    
+//    ##    ##  ##     ## ##   ##       ##    ## #  # ##   ## ##   ##       ##    ##     ##  ##   
+//    ##    ##  ##     ####    #####    ##    ##  ##  ##  ##   ##   ###     ##    #####  #####    
+//    ##    ##  ##     ## ##   ##       ##    ##      ##  #######     ##    ##    ##     ##  ##   
+//    ##    ##   ####  ##  ##  #####    ##    ##      ##  ##   ##  ####     ##    #####  ##   ##  
+//                                                                                                  
+//==================================================================================================
+
+// $("#SEARCH BUTTON").on("click", function (stringified) {
+    var city = $(/*"#USERINPUT"*/).val();
+    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=music&city=";
+    getQuote(); // ! << Call getQuote Function
+    
+    // AJAX call ----
+    function getQuote() {
+        $.get(queryURL + city + "&apikey=RAJIFQErgEgMNdIAtVrRj7Z6bAWPY0cl", function (data, status) {
+            console.log(data);
+            console.log(data._embedded.events[0].name);
+            console.log(data._embedded.events.length);
+            for (var i = 0; i < data._embedded.events.length; i++) {
+                var obj = data._embedded.events[i];
+                    console.log(obj);
+                    console.log(obj.name);
+                var div = $("<div>"); // Create a div
+                    div.html(obj.name);
+                         $("#well-section").append(div);
+            }
+        })
+    }
+
+ 
+            
