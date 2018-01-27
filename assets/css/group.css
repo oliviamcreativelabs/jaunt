@@ -24,6 +24,7 @@ body {
 	background-size: 70%;
 }
 
+
 /* Various font styling */
 
 /* Main header within the jumbotron ============================================*/
@@ -50,53 +51,61 @@ p {
 	color: white;
 }
 
-/* Turns of text decorations when hovering over the cards to click ============*/
-a:hover   {
-  	text-decoration:  none;
-  	}
-
-
 /* Styling for the cards */
 
-/* Solo Card =================================================================*/
-#solo-card {
-	background: url('https://media.tenor.co/images/651ddab92a72ca29c9dd075f641f87cc/raw');
-	background-size: 150%;
-	background-color: black;
+/* Food Card =================================================================*/
+#food-card {
+	background-color: #673AB7;
 	color: white;
-	height: 400px;
+	height: 250px;
 	border: 0px;
 	border-radius: 0px;
 }
 
-#solo-card:hover {
-	transition: all 0.2s ease-in;
-	size: 50px;
+#food-card:hover {
+	transition: all 0.3s ease-in;
+	background-color: #7E57C2;
 }
 
-/* Group Card =================================================================*/
-#group-card {
-	background: url('https://cdn.aarp.net/content/dam/aarp/politics/events-and-history/2017/04/1140-disco-ball-rotate.imgcache.rev68f70fc201b260af09472cba064e652d.gif')top;
-	background-color: black;
+.food-card-content {
+	float: right;
+}
+
+/* Movie Card ===============================================================*/
+#concert-card {
+	background-color: #03A9F4;
 	text-align: right;
 	color: white;
-	height: 100%;
+	height: 250px;
 	border: 0px;
 	border-radius: 0px;
 }
 
-#group-card:hover {
-	size: 200%;
+#concert-card:hover {
+	transition: all 0.3s ease-in;
+	background-color: #4FC3F7;
 }
 
-/* Random Card =================================================================*/
-#random-card {
-	background-color: black;
-	text-align: center;
+.concert-card-content {
+	float: left;
+}
+
+/* Music Card ===============================================================*/
+#music-card {
+	background-color: #E91E63;
 	color: white;
-	height: 100px;
+	height: 250px;
 	border: 0px;
 	border-radius: 0px;
+}
+
+#music-card:hover {
+	transition: all 0.3s ease-in;
+	background-color: #EC407A;
+}
+
+.music-card-content {
+	float: right;
 }
 
 /* Removing padding from rows and columns ======================================*/

@@ -1,0 +1,119 @@
+
+body {
+	background-color: black;
+}
+
+.navbar {
+	background-color: black;
+	font-family: 'Megrim', cursive;
+}
+
+.navbar-brand {
+	color: white;
+}
+
+.navbar-brand:hover {
+	color: #6960EC;
+}
+
+.jumbotron {
+	width: 100%;
+	background-color: black;
+	margin-bottom: 0px;
+	text-align: center;
+	background-size: 70%;
+}
+.card-columns {
+	margin-left: 200px;
+}
+
+/* Various font styling */
+
+/* Main header within the jumbotron ============================================*/
+h1 {
+	color: #6960EC;
+	font-family: 'Megrim', cursive;
+}
+
+/* Card Headers ===============================================================*/
+h5 {
+	color: white;
+	font-family: 'Alegreya Sans SC', sans-serif;
+	font-size: 40px;
+}
+
+/* Font in the cards ============================================================*/
+p {
+	color: white;
+	font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+
+/* Text below the h1 in the jumbotron ==========================================*/
+.lead {
+	color: white;
+}
+
+/* Styling for the cards */
+
+/* Food Card =================================================================*/
+#food-card {
+	background-color: #673AB7;
+	margin-bottom: 50px;
+}
+
+#food-card:hover {
+	cursor: pointer;
+	box-shadow: 0 4px 8px 0 gray, 0 6px 20px 0 gray;
+}
+
+#food-card-expanded {
+	background-color: #673AB7;
+	border: 0px;
+}
+
+/* Movie Card ===============================================================*/
+#movie-card {
+	background-color: #03A9F4;
+	text-align: right;
+}
+
+#movie-card:hover {
+	cursor: pointer;
+	box-shadow: 0 4px 8px 0 gray, 0 6px 20px 0 gray;
+}
+
+#movie-card-expanded {
+	background-color: #03A9F4;
+	color: black;
+	border: 0px;
+}
+
+/* Music Card ===============================================================*/
+#music-card {
+	background-color: #E91E63;
+	margin-top: 70px;
+	margin-left: 75px;
+}
+
+#music-card:hover {
+	cursor: pointer;
+	box-shadow: 0 4px 8px 0 gray, 0 6px 20px 0 gray;
+
+}
+
+#music-card-expanded {
+	background-color: #E91E63;
+	color: black;
+	border: 0px;
+}
+/* Drop Shadow For Cards =====================================================*/
+
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 2;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 3;
+  }
+}
