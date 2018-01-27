@@ -1,25 +1,25 @@
 //=====================================
-//                                     
-//  ##    ##  #####  ##      #####   
-//   ##  ##   ##     ##      ##  ##  
-//    ####    #####  ##      #####   
-//     ##     ##     ##      ##      
-//     ##     #####  ######  ##      
-//                                     
+//
+//  ##    ##  #####  ##      #####
+//   ##  ##   ##     ##      ##  ##
+//    ####    #####  ##      #####
+//     ##     ##     ##      ##
+//     ##     #####  ######  ##
+//
 //=====================================
-/** 
+/**
 *! NOTE: Errors expected at 15/51/59  due to commented out code--Please double check errors are resolved after removing comments
 **/
-// DOCUMENT READY 
+// DOCUMENT READY
 $(function () {
 
 //      $("#search_button").on("click", function () {
         var accessToken = "3uLaVQrJwP21kaJjuErLNk5QE9TTtwtFA7LErPkhI32wZg6PYKUll05F-9_fkoK45CnUZ6qyVOXkvHGjRK-9ajm-CtR9J3r7d5zMfcl72IUJbtLy8yUpSZ-uHlpmWnYx"
         var city = $(/*"#USER-INPUT"*/).val(); // <- The city variable will hold the results we get from the user's inputs via HTML
-        var queryURL = "https://api.yelp.com/v3/businesses/search?&location=" + city;
+        var queryURL = "https://api.yelp.com/v3/businesses/search?&location=" + "chicago";
 
-/** 
- * ! AJAX PREFILTER -- DO NOT CHANGE ----------------------------------------v 
+/**
+ * ! AJAX PREFILTER -- DO NOT CHANGE ----------------------------------------v
  **/
 
 jQuery.ajaxPrefilter(function (options) {
@@ -32,25 +32,24 @@ jQuery.ajaxPrefilter(function (options) {
  * ! AJAX PREFILTER  DO NOT CHANGE ------------------------------------------^
  **/
 
-// AJAX CALL 
+// AJAX CALL
 $.ajax({
     type: "GET",
-    url: "https://api.yelp.com/v3/businesses/search?&location=" + city,
+    url: "https://api.yelp.com/v3/businesses/search?&location=" + "Chicago",
     dataType: "json",
     headers: {
         "Authorization": "Bearer " +
             "3uLaVQrJwP21kaJjuErLNk5QE9TTtwtFA7LErPkhI32wZg6PYKUll05F-9_fkoK45CnUZ6qyVOXkvHGjRK-9ajm-CtR9J3r7d5zMfcl72IUJbtLy8yUpSZ-uHlpmWnYx"
     },
     success: function (response) {
-        for (var i = 0; i < response.businesses.length; i++) {
+        for (var i = 0; i < 5; i++) {
             var obj = response.businesses[i];
-            console.log(obj);
             console.log(obj.name);
-            var div = $("<div>"); 
+            var div = $("<div>");
             div.html(obj.name);
-     
-     //    $("#STORE_DATA")**/.append(div); //! << CHANGE (#STORE DATA) TO MATCH HTML ID 
-   
+
+        $("#food-card-expanded").append(div); //! << CHANGE (#STORE DATA) TO MATCH HTML ID
+
         }
     },
 
@@ -58,20 +57,20 @@ $.ajax({
 })
 
 //==================================================================================================
-//                                                                                                  
-//  ######  ##   ####  ##  ##  #####  ######  ###    ###    ###     ####  ######  #####  #####    
-//    ##    ##  ##     ## ##   ##       ##    ## #  # ##   ## ##   ##       ##    ##     ##  ##   
-//    ##    ##  ##     ####    #####    ##    ##  ##  ##  ##   ##   ###     ##    #####  #####    
-//    ##    ##  ##     ## ##   ##       ##    ##      ##  #######     ##    ##    ##     ##  ##   
-//    ##    ##   ####  ##  ##  #####    ##    ##      ##  ##   ##  ####     ##    #####  ##   ##  
-//                                                                                                  
+//
+//  ######  ##   ####  ##  ##  #####  ######  ###    ###    ###     ####  ######  #####  #####
+//    ##    ##  ##     ## ##   ##       ##    ## #  # ##   ## ##   ##       ##    ##     ##  ##
+//    ##    ##  ##     ####    #####    ##    ##  ##  ##  ##   ##   ###     ##    #####  #####
+//    ##    ##  ##     ## ##   ##       ##    ##      ##  #######     ##    ##    ##     ##  ##
+//    ##    ##   ####  ##  ##  #####    ##    ##      ##  ##   ##  ####     ##    #####  ##   ##
+//
 //==================================================================================================
 
 // $("#SEARCH BUTTON").on("click", function (stringified) {
     var city = $(/*"#USERINPUT"*/).val();
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=music&city=";
     getQuote(); // ! << Call getQuote Function
-    
+
     // AJAX call ----
     function getQuote() {
         $.get(queryURL + city + "&apikey=RAJIFQErgEgMNdIAtVrRj7Z6bAWPY0cl", function (data, status) {
@@ -88,6 +87,3 @@ $.ajax({
             }
         })
     }
-
- 
-            
