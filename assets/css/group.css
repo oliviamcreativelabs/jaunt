@@ -57,17 +57,17 @@ p {
 #food-card {
 	background-color: #673AB7;
 	color: white;
-	height: 250px;
 	border: 0px;
 	border-radius: 0px;
 }
 
 #food-card:hover {
-	transition: all 0.3s ease-in;
-	background-color: #7E57C2;
+	cursor: pointer;
 }
 
-.food-card-content {
+#food-card-expanded {
+	background-color: #673AB7;
+	border: 0px;
 	float: right;
 }
 
@@ -76,17 +76,17 @@ p {
 	background-color: #03A9F4;
 	text-align: right;
 	color: white;
-	height: 250px;
 	border: 0px;
 	border-radius: 0px;
 }
 
 #concert-card:hover {
-	transition: all 0.3s ease-in;
-	background-color: #4FC3F7;
+	cursor: pointer;
 }
 
-.concert-card-content {
+#concert-card-expanded {
+	background-color: #03A9F4;
+	border: 0px;
 	float: left;
 }
 
@@ -94,17 +94,17 @@ p {
 #music-card {
 	background-color: #E91E63;
 	color: white;
-	height: 250px;
 	border: 0px;
 	border-radius: 0px;
 }
 
 #music-card:hover {
-	transition: all 0.3s ease-in;
-	background-color: #EC407A;
+	cursor: pointer;
 }
 
-.music-card-content {
+#music-card-expanded {
+	background-color: #E91E63;
+	border: 0px;
 	float: right;
 }
 
