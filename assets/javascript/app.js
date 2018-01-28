@@ -67,10 +67,10 @@ $.ajax({
 //==================================================================================================
 
 // $("#SEARCH BUTTON").on("click", function (stringified) {
-  // var city = $("#userInput").val(); // ! << Uncomment,  generate input box &  replace #id 
- //  var city = "Chicago" // ! Uncomment to hardcode
+  // var city = $("#userInput").val(); // ! << UNCOMMENT, GENERATE INPUT BOX & #ID AND MATCH TO $("#userInput") 
+ //  var city = "Chicago" // ! << UNCOMMENT TO HARDCODE
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=music&city=";
- //  getQuote(); // ! << Call getQuote Function
+ //  getQuote(); // ! << CALL getQuote FUNCTION
 
     // AJAX call ----
     function getQuote() {
@@ -87,10 +87,45 @@ $.ajax({
                          $("#well-section").append(div);
                 var artistName = $("<h1>").text(obj.name);
                 var artistURL = $("<a>").attr("href", obj.url).append(artistName);
-               // $("#url-displayed-in-an-<h1>-tag").append(artistURL); // ! << Remove comment & enter correct #id 
+               // $("#url-displayed-in-an-<h1>-tag").append(artistURL); // ! << UNCOMMENT & GENERATE/MATCH #ID 
 
 // ! Copy and paste url & add a city in the search to see a test example: ("file:///C:/Users/Dan/Documents/Northwestern/bandify/index.html")
             }
         })
     }
+//===========================================================
+//                                                           
+//  ##        ###     ####  ######      #####  ###    ###  
+//  ##       ## ##   ##       ##        ##     ## #  # ##  
+//  ##      ##   ##   ###     ##        #####  ##  ##  ##  
+//  ##      #######     ##    ##        ##     ##      ##  
+//  ######  ##   ##  ####     ##    ##  ##     ##      ##  
+//                                                           
+//===========================================================
+
+$(function () {
+//  $("#getQuote").on("click", function () { // ! << UNCOMMENT & GENERATE/MATCH BUTTON #ID
+        var queryURL = "http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=disco&api_key=9ece61cd5921f21d347c960c0218b3bd&format=json"
+        //  var apikey = ("9ece61cd5921f21d347c960c0218b3bd") // ! << STORAGE ONLY -- NO NEED TO UNCOMMENT
+        getQuote(); // ! <<  CALL getQuote FUNCTION
+        // AJAX call ----------------------------------------
+        function getQuote() {
+            $.get(queryURL, function (data, status) {
+                console.log(data);
+                for (var i = 0; i < 5; i++) {
+                    var obj = data.tracks.track[i];
+                    console.log(obj);
+                    var div = $("<div>");
+                    div.html(obj.name);
+                    $("#well-section").append(div);
+                    // ! Added url =========================== 
+                    var artistName = $("<h4>").text(obj.name);
+                    var artistURL = $("<a>").attr("href", obj.url).append(artistName);
+                    $("#well-section").append(artistURL); // ! << UNCOMMENT & GENERATE/MATCH  #ID
+
+                }
+            })
+        }
+    })
+
 
