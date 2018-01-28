@@ -67,17 +67,17 @@ $.ajax({
 //==================================================================================================
 
 // $("#SEARCH BUTTON").on("click", function (stringified) {
-  //  var city = $("#userInput").val();
-    var city = "Chicago"
+  // var city = $("#userInput").val(); // ! << Uncomment,  generate input box &  replace #id 
+ //  var city = "Chicago" // ! Uncomment to hardcode
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=music&city=";
-    getQuote(); // ! << Call getQuote Function
+ //  getQuote(); // ! << Call getQuote Function
 
     // AJAX call ----
     function getQuote() {
         $.get(queryURL + city + "&apikey=RAJIFQErgEgMNdIAtVrRj7Z6bAWPY0cl", function (data, status) {
-            console.log(data);
-          console.log(data._embedded.events[0].name);
-            console.log(data._embedded.events.length);
+        //    console.log(data);
+        //    console.log(data._embedded.events[0].name);
+        //    console.log(data._embedded.events.length);
             for (var i = 0; i < 5; i++) {
                 var obj = data._embedded.events[i];
                     console.log(obj);
@@ -85,6 +85,11 @@ $.ajax({
                 var div = $("<div>"); // Create a div
                     div.html(obj.name);
                          $("#well-section").append(div);
+                var artistName = $("<h1>").text(obj.name);
+                var artistURL = $("<a>").attr("href", obj.url).append(artistName);
+               // $("#url-displayed-in-an-<h1>-tag").append(artistURL); // ! << Remove comment & enter correct #id 
+
+// ! Copy and paste url & add a city in the search to see a test example: ("file:///C:/Users/Dan/Documents/Northwestern/bandify/index.html")
             }
         })
     }
