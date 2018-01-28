@@ -67,7 +67,8 @@ $.ajax({
 //==================================================================================================
 
 // $("#SEARCH BUTTON").on("click", function (stringified) {
-    var city = $(/*"#USERINPUT"*/).val();
+  //  var city = $("#userInput").val();
+    var city = "Chicago"
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=music&city=";
     getQuote(); // ! << Call getQuote Function
 
@@ -75,9 +76,9 @@ $.ajax({
     function getQuote() {
         $.get(queryURL + city + "&apikey=RAJIFQErgEgMNdIAtVrRj7Z6bAWPY0cl", function (data, status) {
             console.log(data);
-            console.log(data._embedded.events[0].name);
+          console.log(data._embedded.events[0].name);
             console.log(data._embedded.events.length);
-            for (var i = 0; i < data._embedded.events.length; i++) {
+            for (var i = 0; i < 5; i++) {
                 var obj = data._embedded.events[i];
                     console.log(obj);
                     console.log(obj.name);
@@ -87,3 +88,4 @@ $.ajax({
             }
         })
     }
+
