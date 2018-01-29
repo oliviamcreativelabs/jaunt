@@ -1,3 +1,8 @@
+/**
+* !                                                                                                               
+*! NOTE: Errors expected due to commented out code--Please double check errors are resolved after removing comments
+*!                                                                                                                 
+**/
 //=====================================
 //
 //  ##    ##  #####  ##      #####
@@ -7,10 +12,8 @@
 //     ##     #####  ######  ##
 //
 //=====================================
-/**
-*! NOTE: Errors expected at 15/51/59  due to commented out code--Please double check errors are resolved after removing comments
-**/
-// DOCUMENT READY
+
+// ! DOCUMENT READY
 $(function () {
 
 //      $("#search_button").on("click", function () {
@@ -65,8 +68,8 @@ $.ajax({
 //    ##    ##   ####  ##  ##  #####    ##    ##      ##  ##   ##  ####     ##    #####  ##   ##
 //
 //==================================================================================================
-
-// $("#SEARCH BUTTON").on("click", function (stringified) {
+$(function () {
+// $("#SEARCH BUTTON").on("click", function () {
   // var city = $("#userInput").val(); // ! << UNCOMMENT, GENERATE INPUT BOX & #ID AND MATCH TO $("#userInput") 
  //  var city = "Chicago" // ! << UNCOMMENT TO HARDCODE
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=music&city=";
@@ -126,6 +129,44 @@ $(function () {
                 }
             })
         }
-    })
+})
+//================================================================================
+//                                                                                
+//   ####    #####      ###     ####  #####  ##     ##   #####   ######  #####  
+//  ##       ##  ##    ## ##   ##     ##     ####   ##  ##   ##    ##    ##     
+//  ##  ###  #####    ##   ##  ##     #####  ##  ## ##  ##   ##    ##    #####  
+//  ##   ##  ##  ##   #######  ##     ##     ##    ###  ##   ##    ##    ##     
+//   ####    ##   ##  ##   ##   ####  #####  ##     ##   #####     ##    #####  
+//                                                                                
+//================================================================================
 
+$(function () {
+//  $("#getQuote").on("click", function () { // ! << UNCOMMENT & GENERATE/MATCH BUTTON #ID
+    var queryURL = "http://data.tmsapi.com/v1.1/movies/airings?lineupId=USA-TX42500-X&startDateTime=2018-01-29T03%3A00Z&api_key=xkhnkvkca2j54eavaxaarwhx"
+    //  var apikey = ("xkhnkvkca2j54eavaxaarwhx") // ! << STORAGE ONLY -- NO NEED TO UNCOMMENT
+    getQuote(); // ! <<  CALL getQuote FUNCTION
+    // AJAX call ----------------------------------------
+
+    function getQuote() {
+        $.get(queryURL, function (data, status) {
+            console.log(data); //! << SUCCESS
+            // for (var i = 0; i < data.length; i++) {  // ! << DEBUG ONLY
+            for (var i = 0; i < 5; i++) {
+                var obj = data[i];
+                console.log(obj);
+                var div = $("<div>");
+                div.html(obj.program.title); // ! << ADD TITLE DIV
+                $("#well-section").append(div);
+
+                // ! ADDED GENRE & LONG-DESCRIPTION =========================== 
+                var genre = $("<h6>").text(obj.program.genres);
+                var programDetails = $("<h6>").text(obj.program.longDescription);
+                $("#well-section").append(genre); // ! << UNCOMMENT & GENERATE/MATCH  #ID
+                $("#well-section").append(programDetails); // ! << UNCOMMENT & GENERATE/MATCH  #ID
+                // "http://developer.tmsapi.com/io-docs" // ! << API Developer Info.
+            }
+        })
+    }
+})
+})
 
