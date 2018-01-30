@@ -16,8 +16,6 @@
 *! NOTE: Errors expected at 15/51/59  due to commented out code--Please double check errors are resolved after removing comments
 **/
 
-
-
 // DOCUMENT READY
 $(function() {
 
@@ -185,5 +183,4 @@ $(function () {
                 })
             }
         })
-    })
-})
+    });
