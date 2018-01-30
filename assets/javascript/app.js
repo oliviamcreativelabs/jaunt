@@ -140,33 +140,33 @@ $(function () {
 //                                                                                
 //================================================================================
 
-$(function () {
-//  $("#getQuote").on("click", function () { // ! << UNCOMMENT & GENERATE/MATCH BUTTON #ID
-    var queryURL = "http://data.tmsapi.com/v1.1/movies/airings?lineupId=USA-TX42500-X&startDateTime=2018-01-29T03%3A00Z&api_key=xkhnkvkca2j54eavaxaarwhx"
-    //  var apikey = ("xkhnkvkca2j54eavaxaarwhx") // ! << STORAGE ONLY -- NO NEED TO UNCOMMENT
-    getQuote(); // ! <<  CALL getQuote FUNCTION
-    // AJAX call ----------------------------------------
+    $(function () {
+    //  $("#getQuote").on("click", function () { // ! << UNCOMMENT & GENERATE/MATCH BUTTON #ID
+            var queryURL = "http://data.tmsapi.com/v1.1/movies/airings?lineupId=USA-TX42500-X&startDateTime=2018-01-30T00%3A30Z&imageSize=Sm&imageText=true&api_key=xkhnkvkca2j54eavaxaarwhx"
+            //  var apikey = ("xkhnkvkca2j54eavaxaarwhx") // ! << STORAGE ONLY -- NO NEED TO UNCOMMENT
+            getQuote(); // ! <<  CALL getQuote FUNCTION
+            // AJAX call ----------------------------------------
 
-    function getQuote() {
-        $.get(queryURL, function (data, status) {
-            console.log(data); //! << SUCCESS
-            // for (var i = 0; i < data.length; i++) {  // ! << DEBUG ONLY
-            for (var i = 0; i < 5; i++) {
-                var obj = data[i];
-                console.log(obj);
-                var div = $("<div>");
-                div.html(obj.program.title); // ! << ADD TITLE DIV
-                $("#well-section").append(div);
+            function getQuote() {
+                $.get(queryURL, function (data, status) {
+                    console.log(data); //! << SUCCESS
+                    //      for (var i = 0; i < data.length; i++) { // ! << DEBUG
+                    for (var i = 0; i < 5; i++) {
+                        var obj = data[i];
+                        console.log(obj);
+                        var div = $("<div>");
+                        div.html(obj.program.title);
+                        $("#well-section").append(div);
 
-                // ! ADDED GENRE & LONG-DESCRIPTION =========================== 
-                var genre = $("<h6>").text(obj.program.genres);
-                var programDetails = $("<h6>").text(obj.program.longDescription);
-                $("#well-section").append(genre); // ! << UNCOMMENT & GENERATE/MATCH  #ID
-                $("#well-section").append(programDetails); // ! << UNCOMMENT & GENERATE/MATCH  #ID
-                // "http://developer.tmsapi.com/io-docs" // ! << API Developer Info.
+                        // ! Added url =========================== 
+                        var genre = $("<h6>").text(obj.program.genres);
+                        var programDetails = $("<h6>").text(obj.program.longDescription);
+                //      $("#well-section").append(genre); // ! << UNCOMMENT & GENERATE/MATCH  #ID
+                //      $("#well-section").append(programDetails); // ! << UNCOMMENT & GENERATE/MATCH  #ID
+                        // "http://developer.tmsapi.com/io-docs" // ! << API Developer Info.
+                   }
+                })
             }
         })
-    }
+    })
 })
-})
-
