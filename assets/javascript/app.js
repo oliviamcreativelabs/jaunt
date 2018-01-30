@@ -10,50 +10,65 @@
 /**
 *! NOTE: Errors expected at 15/51/59  due to commented out code--Please double check errors are resolved after removing comments
 **/
+
+
+
 // DOCUMENT READY
-$(function () {
+$(function() {
 
-//      $("#search_button").on("click", function () {
-        var accessToken = "3uLaVQrJwP21kaJjuErLNk5QE9TTtwtFA7LErPkhI32wZg6PYKUll05F-9_fkoK45CnUZ6qyVOXkvHGjRK-9ajm-CtR9J3r7d5zMfcl72IUJbtLy8yUpSZ-uHlpmWnYx"
-        var city = $(/*"#USER-INPUT"*/).val(); // <- The city variable will hold the results we get from the user's inputs via HTML
-        var queryURL = "https://api.yelp.com/v3/businesses/search?&location=" + "chicago";
+  $("#food-button").on("click", function () {
+  event.preventDefault();
+  /**
+   * ! AJAX PREFILTER -- DO NOT CHANGE ----------------------------------------v
+   **/
 
-/**
- * ! AJAX PREFILTER -- DO NOT CHANGE ----------------------------------------v
- **/
-
-jQuery.ajaxPrefilter(function (options) {
+  jQuery.ajaxPrefilter(function(options) {
     if (options.crossDomain && jQuery.support.cors) {
-        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+      options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
     }
-});
+  });
 
-/**
- * ! AJAX PREFILTER  DO NOT CHANGE ------------------------------------------^
- **/
+  /**
+   * ! AJAX PREFILTER  DO NOT CHANGE ------------------------------------------^
+   **/
 
-// AJAX CALL
-$.ajax({
+  // AJAX CALL
+  // creating variables of user inputs
+  // var city = $("#city-input").val().trim();
+  // var cuisineChoise = $("#cuisine-input").val().trim();
+  var city = "Chicago";
+  var cuisineChoise = "mexican";
+  var queryURL = "https://api.yelp.com/v3/businesses/search?term=restaurant&location="+ city + "&categories=" + cuisineChoise;
+
+  $.ajax({
     type: "GET",
-    url: "https://api.yelp.com/v3/businesses/search?&location=" + "Chicago",
+    url: queryURL,
     dataType: "json",
     headers: {
-        "Authorization": "Bearer " +
-            "3uLaVQrJwP21kaJjuErLNk5QE9TTtwtFA7LErPkhI32wZg6PYKUll05F-9_fkoK45CnUZ6qyVOXkvHGjRK-9ajm-CtR9J3r7d5zMfcl72IUJbtLy8yUpSZ-uHlpmWnYx"
+      "Authorization": "Bearer " +
+        "3uLaVQrJwP21kaJjuErLNk5QE9TTtwtFA7LErPkhI32wZg6PYKUll05F-9_fkoK45CnUZ6qyVOXkvHGjRK-9ajm-CtR9J3r7d5zMfcl72IUJbtLy8yUpSZ-uHlpmWnYx"
     },
-    success: function (response) {
-        for (var i = 0; i < 5; i++) {
-            var obj = response.businesses[i];
-            console.log(obj.name);
-            var div = $("<div>");
-            div.html(obj.name);
+    success: function(response) {
+      for (var i = 0; i < 5; i++) {
+        var obj = response.businesses[i];
+        console.log(obj);
+        var div = $("<div>");
 
-        $("#food-card-expanded").append(div); //! << CHANGE (#STORE DATA) TO MATCH HTML ID
+        var restImg = obj.image_url; //stores business image link.
+        var img = $("<img>").attr("src", restImg).attr("class", "rest-img"); //creates image tag and adds image url and class for styling.
+        var imgLink = $("<br><a href=" + obj.url +"></a><br>")
+        imgLink.append(img)
+        // img.attr("src", restImg);
+        // img.attr("class", "rest-img");
 
-        }
+
+        $("#food-card-expanded").append(imgLink);
+
+      }
     },
 
-})
+    })
+  })
 })
 
 //==================================================================================================

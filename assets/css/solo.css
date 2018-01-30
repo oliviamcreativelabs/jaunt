@@ -117,3 +117,7 @@ p {
     column-count: 3;
   }
 }
+
+.rest-img {
+	width: 100%;
+}
