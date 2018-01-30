@@ -34,9 +34,7 @@
 	<!-- Jumbotron (End) -->
 
 
-<div class="container-fluid">
-
-<div class="card-columns">
+<div class="container">
 
     <div class="card" id="food-card">
         <div class="card-body">
@@ -80,11 +78,21 @@
 	    <p>I liked this band before they were popular, I swear.</p>
 	      <div class="collapse" id="music-expand-content">
 		    <div class="card card-body" id="music-card-expanded">
-		      INSERT API STUFF HERE
+			  <div class="playlist">
+			    <div class="loader">
+				  <div class="inner-circle"></div>
+				</div>
+			  </div>
+			    <div class="form">
+				  <form action="">
+				    <input type="search" value=""" id="category" placeholder="pop, party, chill, etc.">
+				    <p>Give us a category and we'll give you a playlist.</p>
+				    <input id="add-category" type="button" value="Create">
+				  </form>
+				</div>
 		    </div>
-	    </div>
+	      </div>
 	  </div>
-	</div>
 
 </div>
 <!-- End of Container -->
@@ -92,12 +100,14 @@
     <!-- Optional JavaScript -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="assets/javascript/app.js" charset="utf-8"></script>
 
+    <!-- Custom JavaScript -->
+	<script src="assets/javascript/spotify.js"></script>
   </body>
 </html>

@@ -69,11 +69,6 @@ a:hover   {
 	border-radius: 0px;
 }
 
-#solo-card:hover {
-	transition: all 0.2s ease-in;
-	size: 50px;
-}
-
 /* Group Card =================================================================*/
 #group-card {
 	background: url('https://cdn.aarp.net/content/dam/aarp/politics/events-and-history/2017/04/1140-disco-ball-rotate.imgcache.rev68f70fc201b260af09472cba064e652d.gif')top;
@@ -83,10 +78,6 @@ a:hover   {
 	height: 100%;
 	border: 0px;
 	border-radius: 0px;
-}
-
-#group-card:hover {
-	size: 200%;
 }
 
 /* Random Card =================================================================*/

@@ -1,3 +1,8 @@
+/**
+* !
+*! NOTE: Errors expected due to commented out code--Please double check errors are resolved after removing comments
+*!
+**/
 //=====================================
 //
 //  ##    ##  #####  ##      #####
@@ -80,25 +85,105 @@ $(function() {
 //    ##    ##   ####  ##  ##  #####    ##    ##      ##  ##   ##  ####     ##    #####  ##   ##
 //
 //==================================================================================================
-
-// $("#SEARCH BUTTON").on("click", function (stringified) {
-    var city = $(/*"#USERINPUT"*/).val();
+$(function () {
+// $("#SEARCH BUTTON").on("click", function () {
+  // var city = $("#userInput").val(); // ! << UNCOMMENT, GENERATE INPUT BOX & #ID AND MATCH TO $("#userInput")
+ //  var city = "Chicago" // ! << UNCOMMENT TO HARDCODE
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=music&city=";
-    getQuote(); // ! << Call getQuote Function
+ //  getQuote(); // ! << CALL getQuote FUNCTION
 
     // AJAX call ----
     function getQuote() {
         $.get(queryURL + city + "&apikey=RAJIFQErgEgMNdIAtVrRj7Z6bAWPY0cl", function (data, status) {
-            console.log(data);
-            console.log(data._embedded.events[0].name);
-            console.log(data._embedded.events.length);
-            for (var i = 0; i < data._embedded.events.length; i++) {
+        //    console.log(data);
+        //    console.log(data._embedded.events[0].name);
+        //    console.log(data._embedded.events.length);
+            for (var i = 0; i < 5; i++) {
                 var obj = data._embedded.events[i];
                     console.log(obj);
                     console.log(obj.name);
                 var div = $("<div>"); // Create a div
                     div.html(obj.name);
                          $("#well-section").append(div);
+                var artistName = $("<h1>").text(obj.name);
+                var artistURL = $("<a>").attr("href", obj.url).append(artistName);
+               // $("#url-displayed-in-an-<h1>-tag").append(artistURL); // ! << UNCOMMENT & GENERATE/MATCH #ID
+
+// ! Copy and paste url & add a city in the search to see a test example: ("file:///C:/Users/Dan/Documents/Northwestern/bandify/index.html")
             }
         })
     }
+//===========================================================
+//
+//  ##        ###     ####  ######      #####  ###    ###
+//  ##       ## ##   ##       ##        ##     ## #  # ##
+//  ##      ##   ##   ###     ##        #####  ##  ##  ##
+//  ##      #######     ##    ##        ##     ##      ##
+//  ######  ##   ##  ####     ##    ##  ##     ##      ##
+//
+//===========================================================
+
+$(function () {
+//  $("#getQuote").on("click", function () { // ! << UNCOMMENT & GENERATE/MATCH BUTTON #ID
+        var queryURL = "http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=disco&api_key=9ece61cd5921f21d347c960c0218b3bd&format=json"
+        //  var apikey = ("9ece61cd5921f21d347c960c0218b3bd") // ! << STORAGE ONLY -- NO NEED TO UNCOMMENT
+        getQuote(); // ! <<  CALL getQuote FUNCTION
+        // AJAX call ----------------------------------------
+        function getQuote() {
+            $.get(queryURL, function (data, status) {
+                console.log(data);
+                for (var i = 0; i < 5; i++) {
+                    var obj = data.tracks.track[i];
+                    console.log(obj);
+                    var div = $("<div>");
+                    div.html(obj.name);
+                    $("#well-section").append(div);
+                    // ! Added url ===========================
+                    var artistName = $("<h4>").text(obj.name);
+                    var artistURL = $("<a>").attr("href", obj.url).append(artistName);
+                    $("#well-section").append(artistURL); // ! << UNCOMMENT & GENERATE/MATCH  #ID
+
+                }
+            })
+        }
+})
+//================================================================================
+//
+//   ####    #####      ###     ####  #####  ##     ##   #####   ######  #####
+//  ##       ##  ##    ## ##   ##     ##     ####   ##  ##   ##    ##    ##
+//  ##  ###  #####    ##   ##  ##     #####  ##  ## ##  ##   ##    ##    #####
+//  ##   ##  ##  ##   #######  ##     ##     ##    ###  ##   ##    ##    ##
+//   ####    ##   ##  ##   ##   ####  #####  ##     ##   #####     ##    #####
+//
+//================================================================================
+
+    $(function () {
+    //  $("#getQuote").on("click", function () { // ! << UNCOMMENT & GENERATE/MATCH BUTTON #ID
+            var queryURL = "http://data.tmsapi.com/v1.1/movies/airings?lineupId=USA-TX42500-X&startDateTime=2018-01-30T00%3A30Z&imageSize=Sm&imageText=true&api_key=xkhnkvkca2j54eavaxaarwhx"
+            //  var apikey = ("xkhnkvkca2j54eavaxaarwhx") // ! << STORAGE ONLY -- NO NEED TO UNCOMMENT
+            getQuote(); // ! <<  CALL getQuote FUNCTION
+            // AJAX call ----------------------------------------
+
+            function getQuote() {
+                $.get(queryURL, function (data, status) {
+                    console.log(data); //! << SUCCESS
+                    //      for (var i = 0; i < data.length; i++) { // ! << DEBUG
+                    for (var i = 0; i < 5; i++) {
+                        var obj = data[i];
+                        console.log(obj);
+                        var div = $("<div>");
+                        div.html(obj.program.title);
+                        $("#well-section").append(div);
+
+                        // ! Added url ===========================
+                        var genre = $("<h6>").text(obj.program.genres);
+                        var programDetails = $("<h6>").text(obj.program.longDescription);
+                //      $("#well-section").append(genre); // ! << UNCOMMENT & GENERATE/MATCH  #ID
+                //      $("#well-section").append(programDetails); // ! << UNCOMMENT & GENERATE/MATCH  #ID
+                        // "http://developer.tmsapi.com/io-docs" // ! << API Developer Info.
+                   }
+                })
+            }
+        })
+    })
+})

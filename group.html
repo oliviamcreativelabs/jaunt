@@ -84,8 +84,19 @@
             <h5 class="music-card-title" data-toggle="collapse" href="#music-expand-content" role="button" aria-expanded="false" aria-controls="collapseExample">Ain't no party like a dance party!</h5>
             <p>Let's get some music playing (we won't judge).</p>
               <div class="collapse" id="music-expand-content">
-			    <div class="card card-body" id="music-card-expanded">INSERT API STUFF HERE
-			    </div>
+			    <div class="card card-body" id="music-card-expanded">
+				  <div class="playlist">
+				    <div class="loader">
+				      <div class="inner-circle"></div>
+				    </div>
+			      </div>
+					<div class="form">
+						<form action="">
+							<input type="search" value=""" id="category" placeholder="pop, party, chill, etc.">
+						    <p>Give us a category and we'll give you a playlist.</p>
+							<input id="add-category" type="button" value="Create">
+						</form>
+					</div>
 	          </div>
             </div>
 		  </div>
@@ -95,15 +106,48 @@
 	  <!-- Music Input Row (End) -->
 
 
-
-    <!-- Optional JavaScript -->
-
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+	<script> 
+	function getParameterByName(name, url) {
+	    if (!url) url = window.location.href;
+	    name = name.replace(/[\[\]]/g, "\\$&");
+	    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+	        results = regex.exec(url);
+	    if (!results) return null;
+	    if (!results[2]) return '';
+	    return decodeURIComponent(results[2].replace(/\+/g, " "));
+	}
+
+	jQuery.ajaxPrefilter(function (options) {
+	    if (options.crossDomain && jQuery.support.cors) {
+	        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+	    }
+	});
+	var accessToken = "";
+	$.ajax({
+        url: "https://accounts.spotify.com/api/token",
+		headers: {
+		     'Authorization': 'Basic ' + btoa("1542d1f69f99495eba4fbc6ca5574eb2:cb77e7a06c034adeb0c8b90d571680d0")
+		 },
+		method: 'POST',
+		data: {
+	      "grant_type":    "authorization_code",
+	      "code":          getParameterByName("code"),
+	      "redirect_uri":  "http://localhost:8080/group.html"
+	    },
+      }).then(function(response) {
+	      console.log(response);
+	      accessToken = response.access_token
+      }); 
+  	</script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Custom JavaScript -->
+	<script src="assets/javascript/spotify.js"></script>
 
   </body>
 </html>
