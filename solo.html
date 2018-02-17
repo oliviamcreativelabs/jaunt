@@ -18,35 +18,36 @@
   </head>
   <body>
 
-
 	<!-- Nav Bar -->
-    <nav class="navbar">
-      <a class="navbar-brand" href="index.html">Jaunt</a>
-    </nav>
+	<nav class="navbar">
+		<!-- Links Navbar to main index page-->
+		<a class="navbar-brand" href="index.html">Jaunt</a>
+	</nav>
 
-    <!-- Jumbotron -->
+	<!-- Jumbotron -->
 	<div class="jumbotron jumbotron-fluid">
-	  <div class="container">
-	    <h1 class="display-4">Let's stay in.</h1>
-	    <p class="lead">Oh you want to be alone? Okay.</p>
-	  </div>
+		<div class="container">
+			<h1 class="display-4">Let's stay in.</h1>
+			<p class="lead">Oh you want to be alone? Okay.</p>
+		</div>
 	</div>
 	<!-- Jumbotron (End) -->
 
-
+<!-- Page Container-->
 <div class="container">
 
+	<!-- Food Card -->
     <div class="card" id="food-card">
         <div class="card-body">
           <h5 class="food-card-title" data-toggle="collapse" href="#food-expand-content" role="button" aria-expanded="false" aria-controls="collapseExample">Hungry?</h5>
           <p>Let's get some food.</p>
             <div class="collapse" id="food-expand-content">
-			      <div class="card card-body" id="food-card-expanded">
+			      <div class="card card-body" id="food-card-expanded"><hr>
               <!-- Form group that is within the food card -->
               <form>
                 <div class="form-group">
-                  <label class= "text-white" for="city-input">What City are you in?</label>
-                  <input type="text" class="form-control" id="city-input" aria-describedby="emailHelp" placeholder="Enter city">
+                  <label class= "text-white" for="city-input">Where you at?</label>
+                  <input type="text" class="form-control" id="city-input" aria-describedby="emailHelp" placeholder="city or zip code">
                   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                 </div>
                 <div class="form-group">
@@ -54,45 +55,64 @@
                   <input type="text" class="form-control" id="cuisine-input" placeholder="Chinese, Mexican,etc">
                 </div>
                 <button type="submit" class="btn btn-primary" id="food-button">Submit</button>
+                <button type="reset" class="btn btn-primary" id="reset-button">Reset</button>
+                <div id="food-results"></div>
+                	<br>
+					<div class="food-loader">
+						<div class="food-inner-circle"></div>
+					</div>
               </form>
 			      </div>
 	      </div>
         </div>
     </div>
+	<!-- Food Card (End) -->
 
+
+	<!-- Movie Card -->
 	<div class="card" id="movie-card">
-	  <div class="card-body">
-	    <h5 class="movie-card-title" data-toggle="collapse" href="#movie-expand-content" role="button" aria-expanded="false" aria-controls="collapseExample">Let's watch a movie.</h5>
+		<div class="card-body">
+		<!-- This is the part that craetes the collapsable section-->
+		<h5 class="movie-card-title" data-toggle="collapse" href="#movie-expand-content" id="display-movie" role="button" aria-expanded="false" aria-controls="collapseExample">Let's watch a movie.</h5>
 	    <p>Stop scrolling through Netflix, let me pick.</p>
-	      <div class="collapse" id="movie-expand-content">
-		    <div class="card card-body" id="movie-card-expanded">
-		      INSERT API STUFF HERE
-		    </div>
-	    </div>
-	  </div>
+			<div class="collapse" data-toggle="collapse" id="movie-expand-content">
+				<div class="card card-body" id="movie-card-expanded"><hr>
+				</div>
+			</div>
+		</div>
 	</div>
+	<!-- End of Movie Card -->
+
 
 	<div class="card" id="music-card">
-	  <div class="card-body">
+		<div class="card-body">
+		<!-- This is the part that craetes the collapsable section-->
 	    <h5 class="music-card-title" data-toggle="collapse" href="#music-expand-content" role="button" aria-expanded="false" aria-controls="collapseExample">Let's listen to some music.</h5>
 	    <p>I liked this band before they were popular, I swear.</p>
-	      <div class="collapse" id="music-expand-content">
-		    <div class="card card-body" id="music-card-expanded">
-			  <div class="playlist">
-			    <div class="loader">
-				  <div class="inner-circle"></div>
+			<div class="collapse" data-toggle="collapse" id="music-expand-content">
+				<div class="card card-body" id="music-card-expanded"><hr>
+					<!-- Playlist is sent into this div via JS -->
+					<div class="playlist">
+					<!-- A load pops in here while the playlist loads (via JS)-->
+					<div class="loader">
+						<div class="inner-circle"></div>
+					</div>
+					<br>
+					</div>
+						<!-- Input form for categories -->
+						<div class="form">
+							<br>
+							<form>
+							<p class="music">Give us a category and we'll give you a playlist.</p>
+							<input type="text" class="form-control" id="music-input" placeholder="Pop, Party, Chill, etc.">
+							<button type="submit" class="btn btn-primary" id="music-button">Submit</button>
+							</form>
+						</div>
 				</div>
-			  </div>
-			    <div class="form">
-				  <form action="">
-				    <input type="search" value="" id="category" placeholder="pop, party, chill, etc.">
-				    <p>Give us a category and we'll give you a playlist.</p>
-				    <input id="add-category" type="button" value="Create">
-				  </form>
-				</div>
-		    </div>
-	      </div>
-	  </div>
+			</div>
+		</div>
+	</div>
+	<!-- Music Card (End)-->
 
 </div>
 <!-- End of Container -->
@@ -102,12 +122,55 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery.js"></script>
 
+	<script>
+	function getParameterByName(name, url) {
+	    if (!url) url = window.location.href;
+	    name = name.replace(/[\[\]]/g, "\\$&");
+	    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+	        results = regex.exec(url);
+	    if (!results) return null;
+	    if (!results[2]) return '';
+	    return decodeURIComponent(results[2].replace(/\+/g, " "));
+	}
+
+	jQuery.ajaxPrefilter(function (options) {
+	    if (options.crossDomain && jQuery.support.cors) {
+	        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+	    }
+	});
+
+	// Variable where our accessToken is stored, it is called in the Spotify.js file
+	var accessToken = "";
+
+	// Ajax call to request our accessToken
+	$.ajax({
+        url: "https://accounts.spotify.com/api/token",
+		headers: {
+		     'Authorization': 'Basic ' + btoa("1542d1f69f99495eba4fbc6ca5574eb2:cb77e7a06c034adeb0c8b90d571680d0"),
+		     'Content-Type': 'application/x-www-form-urlencoded'
+		 },
+		method: 'POST',
+		data: {
+	      "grant_type":    "client_credentials",
+	      "code":          getParameterByName("code"),
+	      "redirect_uri":  "https://iamtheozzy.github.io/jaunt/solo.html"
+	    },
+      }).then(function(response) {
+	      console.log(response);
+	      accessToken = response.access_token
+      });
+
+  	</script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="assets/javascript/app.js" charset="utf-8"></script>
 
-    <!-- Custom JavaScript -->
+	<!-- Custom JavaScript -->
+
+	<script src="assets/javascript/app.alt.js"></script>
+	<script src="assets/javascript/app.js" charset="utf-8"></script>
 	<script src="assets/javascript/spotify.js"></script>
+
   </body>
 </html>
